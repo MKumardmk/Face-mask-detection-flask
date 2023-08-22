@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Mask Detection</title>
+</head>
+<body>
+    <h1>Face Mask Detection</h1>
+    <form method="POST" action="/" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".jpg, .jpeg, .png" required>
+        <button type="submit">Upload & Detect</button>
+    </form>
+    
+    {% if filename %}
+    <h2>Uploaded Image:</h2>
+    <img src="{{ url_for('static', filename='images/' + filename) }}" alt="Uploaded Image" width="300">
+    
+    {% if result is not none %}
+    <h2>Result:</h2>
+    {% if result %}
+    <p style="color: green;">{{result}}</p>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+</body>
+</html>
